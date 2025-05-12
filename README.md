@@ -25,33 +25,35 @@ La orquestación se realiza con **Docker Compose**, que levanta contenedores par
 
 ## Estructura del Proyecto
 ```text
-├── .env # Variables de entorno (MySQL, Redis, puertos)
-├── docker-compose.yml # Orquestación de servicios
-├── dbinit/ # Init-container: crea BD y tablas
-│ ├── Dockerfile
-│ └── app/
-│ ├── crearDB_poo.py
-│ └── CrearTablasDb.py
-├── mysql-init/ # SQL de inicialización de usuarios
-│ └── init.sql
-├── receiver/ # Contenedor de captura UDP + parsing syslog
-│ ├── Dockerfile
-│ ├── rsyslog.conf
-│ └── app/
-│ ├── config.py
-│ ├── receiver.py # Lógica de extracción y push a Redis receiver
-│ └── requirements.txt
-├── nodejs/ # Contenedor Node.js (processor)
-│ ├── Dockerfile
-│ └── app/
-│ ├── package.json
-│ └── processor.js # Lógica de batching, MySQL, detección género, UDP 
-├── processor/ # Versión Python del processor (no usada)
-│ ├── Dockerfile
-│ └── processor.py
-└── rsyslogproxy/ # (Obsoleto: merged into receiver)
-├── Dockerfile
-└── rsyslog.conf
+```text
+├── .env                # Variables de entorno (MySQL, Redis, puertos)
+├── docker-compose.yml  # Orquestación de servicios
+├── dbinit/             # Init-container: crea BD y tablas
+│   ├── Dockerfile
+│   └── app/
+│       ├── crearDB_poo.py
+│       └── CrearTablasDb.py
+├── mysql-init/         # SQL de inicialización de usuarios
+│   └── init.sql
+├── receiver/           # Contenedor de captura UDP + parsing syslog
+│   ├── Dockerfile
+│   ├── rsyslog.conf
+│   └── app/
+│       ├── config.py
+│       ├── receiver.py    # Lógica de extracción y push a Redis
+│       └── requirements.txt
+├── nodejs/             # Contenedor Node.js (processor)
+│   ├── Dockerfile
+│   └── app/
+│       ├── package.json
+│       └── processor.js   # Lógica de batching, MySQL, detección de género, UDP
+├── processor/          # Versión Python del processor (no usada)
+│   ├── Dockerfile
+│   └── processor.py
+└── rsyslogproxy/       # (Obsoleto: merged into receiver)
+    ├── Dockerfile
+    └── rsyslog.conf
+```
 ```
 ## Requisitos Previos
 * Docker instalado en el equipo
