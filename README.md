@@ -170,9 +170,9 @@ DataProcessor.processMessage(raw):
 
   redis.cacheLastCampus(msg.hash,  campusNew, 300)
   redis.cacheLastTime(msg.hash,    msg.timestamp, 300)
-```
+
   if (connQueue.length + movQueue.length) >= 2000 || timeout_expiró():
       db.bulkUpsertConexiones(connQueue.splice(0))
       db.bulkInsertMovimientos(movQueue.splice(0))
-
+```
 
