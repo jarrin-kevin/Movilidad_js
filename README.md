@@ -25,7 +25,6 @@ La orquestación se realiza con **Docker Compose**, que levanta contenedores par
 
 ## Estructura del Proyecto
 ```text
-```text
 ├── .env                # Variables de entorno (MySQL, Redis, puertos)
 ├── docker-compose.yml  # Orquestación de servicios
 ├── dbinit/             # Init-container: crea BD y tablas
@@ -54,7 +53,7 @@ La orquestación se realiza con **Docker Compose**, que levanta contenedores par
     ├── Dockerfile
     └── rsyslog.conf
 ```
-```
+
 ## Requisitos Previos
 * Docker instalado en el equipo
 * Python ≥ 3.12 (para **receiver**)
