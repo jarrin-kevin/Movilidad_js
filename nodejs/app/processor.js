@@ -171,7 +171,7 @@ class DataProcessor {
         return new Date(+year, months[mon], +day, h, m, s);
     } 
     normalizarCampus(raw) {
-        const map = { CC:'CENTRAL', Comisariato:'CENTRAL', CBAL:'BALZAY', balzay:'BALZAY', Balzay:'BALZAY',CREDU: 'CENTRAL',credu: 'CENTRAL',Credu: 'CENTRAL' };
+        const map = { CC:'CENTRAL', Comisariato:'CENTRAL', CBAL:'BALZAY', balzay:'BALZAY', Balzay:'BALZAY',CREDU: 'CENTRAL',credu: 'CENTRAL',Credu: 'CENTRAL',FEUE:'CENTRAL', RECTORADO:'CENTRAL'};
         return map[raw] || raw;
     }
     _parseMessage(raw) {

@@ -21,6 +21,7 @@ services:
       - MYSQL_DATABASE
       - MYSQL_USER=${MYSQL_APP_USER}
       - MYSQL_PASSWORD=${MYSQL_APP_PASSWORD}
+      - TZ=America/Guayaquil
     volumes:
     - ./mysql-init:/docker-entrypoint-initdb.d  # Asegurar volumen de inicialización
     - mysql-data:/var/lib/mysql  # Esta línea falta - conecta el volumen al contenedor
@@ -28,18 +29,11 @@ services:
     ports:
       - "3306:3306"
     healthcheck:
-#      test: ["CMD", "nc", "-z", "localhost", "3306"]
       test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "--password=${MYSQL_ROOT_PASSWORD}"]
       interval: 5s
       timeout: 3s
       start_period: 80s
       retries: 5
-    # healthcheck:
-    #   test: ["CMD", "mysqladmin", "ping", "-h", "127.0.0.1", "-u", "root", "--password=${MYSQL_ROOT_PASSWORD}"]
-    #   interval: 30s
-    #   retries: 10
-    #   start_period: 30s
-    #   timeout: 5s
     networks:
       - backend
     mem_limit: 700m
@@ -197,7 +191,7 @@ services:
       start_period: 30s
       retries: 5
     environment:
-      - NODE_ENV=development         # activa modo dev en tu app
+      - TZ=America/Guayaquil
     extra_hosts:
       - "host.docker.internal:host-gateway" 
     networks:
